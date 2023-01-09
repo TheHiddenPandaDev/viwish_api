@@ -1,4 +1,6 @@
-Flask==2.2.2
-Flask-SQLAlchemy==2.5.1
-gunicorn==20.1.0
-psycopg2-binary==2.9.4
+Flask~=2.2.2
+Flask-SQLAlchemy
+gunicorn
+psycopg2-binary
+dependency-injector
+SQLAlchemy~=1.4.46
