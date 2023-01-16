@@ -1,0 +1,2 @@
+class LogNotNotFoundException(Exception):
+    pass
