@@ -11,12 +11,8 @@ blueprint = Blueprint('get_log_route', __name__)
 @inject
 def get_log(log_id: int, repository: LogRepository = Provide[Container.log_repository]) -> tuple[Response, int]:
 
-    print('----- START -----')
-    print(repository.getAll())
-    print('----- END -----')
-
-    return jsonify({}), 200
-
     log: Log = repository.get(log_id)
+
+    if log is None : return jsonify([]), 200
 
     return jsonify(log.json()), 200

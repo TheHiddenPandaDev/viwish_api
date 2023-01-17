@@ -10,7 +10,7 @@ class Log(db.Model):
     id_user: int = db.Column(db.Integer)
     id_user_referred: int = db.Column(db.Integer)
     description: str = db.Column(db.Text)
-    # date_created: datetime = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at: datetime = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     def __init__(self,
         action_type: str,
@@ -44,4 +44,5 @@ class Log(db.Model):
             "id_user": self.id_user,
             "id_user_referred": self.id_user_referred,
             "description": self.description,
+            "created_at": self.created_at,
         }

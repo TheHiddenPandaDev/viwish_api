@@ -7,11 +7,12 @@ from project.domain.user.user import User
 
 @dataclass
 class UserRepository(ITUserRepository):
-    def getAll(self) -> None:
-        print(User.query.all())
+    def getAll(self) -> list[User]:
+        return User.query.all()
     def get(self, email: str) -> User:
         return User.query.filter_by(email=email).first()
 
     def create(self, user: User) -> User:
         db.session.add(user)
+        db.session.commit()
         return user
