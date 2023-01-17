@@ -1,5 +1,7 @@
 from dataclasses import dataclass
 
+from project.api_errors import ApiErrors
+from project.documentation_urls import DocumentationUrls
 from project.domain.log.log import Log
 from project.domain.user.exception.user_not_found_exception import UserNotNotFoundException
 from project.domain.user.service.user_finder import UserFinder
@@ -34,10 +36,11 @@ class CreateLogUseCase:
             self.user_finder.__call__(id_user_referred) is None
         ):
             raise UserNotNotFoundException(
-                code=403,
-                description=f"id_user: {id_user} or id_user_referred: {id_user_referred} don't exist in database",
-                api_error_code=1234,
-                documentation='test',
+                code=400,
+                description=f"id_user: {id_user} or id_user_referred: {id_user_referred}. Don't exist in database.",
+                api_error_code=ApiErrors.table_log_unexpected_error['code'],
+                api_error_event=ApiErrors.table_log_unexpected_error['event'],
+                documentation=DocumentationUrls.url_create_log,
             )
 
         log = Log(

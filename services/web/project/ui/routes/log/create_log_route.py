@@ -1,5 +1,6 @@
-from flask import Blueprint, Response, request
+from flask import Blueprint, request, json
 from dependency_injector.wiring import inject, Provide
+from werkzeug import Response
 
 from project.application.log.create.create_log_command import CreateLogCommand
 from project.application.log.create.create_log_commandHandler import CreateLogCommandHandler
@@ -11,7 +12,7 @@ blueprint = Blueprint('create_log_route', __name__)
 @inject
 def create_log(
      create_log_command_handler: CreateLogCommandHandler = Provide[Container.create_log_command_handler],
-) -> Response:
+) -> [Response, int]:
 
     postRequest: dict = request.get_json()
 
@@ -24,4 +25,15 @@ def create_log(
 
     create_log_command_handler.__call__(create_log_command)
 
-    return Response('OK', 201)
+    return Response(
+        {
+            json.dumps({
+                "code": 201,
+                "api_error_code": None,
+                "api_error_event": None,
+                "documentation": "https://viwish.atlassian.net/wiki/spaces/VIWISH/pages/262145/Create+Log",
+                "description": "OK",
+            }),
+        },
+        content_type="application/json",
+    ), 201

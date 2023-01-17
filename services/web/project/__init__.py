@@ -1,6 +1,5 @@
-from flask import Flask, jsonify, json
+from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.exceptions import HTTPException
 
 from project.domain.viwish_exception import ViWishException
 
