@@ -2,10 +2,10 @@ from dependency_injector import containers, providers
 
 from project.application.log.create.create_log_commandHandler import CreateLogCommandHandler
 from project.application.log.create.create_log_use_case import CreateLogUseCase
-from project.application.log.create.log_creator import LogCreator
 from project.application.user.create.create_user_commandHandler import CreateUserCommandHandler
 from project.application.user.create.create_user_use_case import CreateUserUseCase
 from project.application.user.create.user_creator import UserCreator
+from project.domain.user.service.user_finder import UserFinder
 from project.infrastructure.persistance.PostgreeSQL.log.log_repository import LogRepository
 from project.infrastructure.persistance.PostgreeSQL.user.user_repository import UserRepository
 
@@ -17,11 +17,16 @@ class Container(containers.DeclarativeContainer):
     log_repository = providers.Singleton(LogRepository)
     user_repository = providers.Singleton(UserRepository)
 
+    user_finder = providers.Factory(UserFinder, user_repository=user_repository)
+
     # Application Layer
 
     # Log - Create
-    log_creator = providers.Factory(LogCreator, log_repository=log_repository)
-    create_log_use_case = providers.Factory(CreateLogUseCase, log_creator=log_creator)
+    create_log_use_case = providers.Factory(
+        CreateLogUseCase,
+        log_repository=log_repository,
+        user_finder=user_finder,
+    )
     create_log_command_handler = providers.Factory(CreateLogCommandHandler, create_log_use_case=create_log_use_case)
 
 

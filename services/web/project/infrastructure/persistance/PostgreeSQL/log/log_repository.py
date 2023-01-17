@@ -9,9 +9,9 @@ from project.domain.log.log import Log
 class LogRepository(ITLogRepository):
     def getAll(self) -> list[Log]:
         return Log.query.all()
-    def get(self, log_id: int) -> Log:
-        print('LOG ID: '+log_id)
-        return Log.query.get(log_id)
+
+    def get(self, id_log: int) -> Log:
+        return Log.query.get(id_log)
 
     def create(self, log: Log) -> Log:
         db.session.add(log)

@@ -4,3 +4,4 @@ gunicorn
 psycopg2-binary
 dependency-injector
 SQLAlchemy~=1.4.46
+Werkzeug~=2.2.2

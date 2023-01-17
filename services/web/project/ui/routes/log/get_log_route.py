@@ -7,11 +7,11 @@ from project.infrastructure.persistance.PostgreeSQL.log.log_repository import Lo
 
 blueprint = Blueprint('get_log_route', __name__)
 
-@blueprint.route("/<log_id>", methods=["GET"])
+@blueprint.route("/<id_log>", methods=["GET"])
 @inject
-def get_log(log_id: int, repository: LogRepository = Provide[Container.log_repository]) -> tuple[Response, int]:
+def get_log(id_log: int, repository: LogRepository = Provide[Container.log_repository]) -> tuple[Response, int]:
 
-    log: Log = repository.get(log_id)
+    log: Log = repository.get(id_log)
 
     if log is None : return jsonify([]), 200
 
