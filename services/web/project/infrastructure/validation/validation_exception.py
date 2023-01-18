@@ -1,6 +1,6 @@
 from flask import json, Response
 
-class ViWishException(Exception):
+class ValidationException(Exception):
     code: int
     response: Response
     def __init__(

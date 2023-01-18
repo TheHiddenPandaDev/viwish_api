@@ -16,7 +16,7 @@ from project.ui.routes.log import create_log_route
 @app.errorhandler(Exception)
 def handle_error(e):
     code = 500
-    if isinstance(e, ViWishException):
+    if hasattr(e, 'get_response') and hasattr(e, 'code'):
         return e.get_response(), e.code
     return jsonify(error=str(e)), code
 

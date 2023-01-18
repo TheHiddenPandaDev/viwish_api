@@ -5,6 +5,10 @@ from werkzeug import Response
 from project.application.log.create.create_log_command import CreateLogCommand
 from project.application.log.create.create_log_commandHandler import CreateLogCommandHandler
 from project.container import Container
+from project.documentation_urls import DocumentationUrls
+from project.infrastructure.validation.validation_rules.create_log_route_validation_rules import \
+    CreateLogRouteValidationRules
+from project.infrastructure.validation.validator import Validator
 
 blueprint = Blueprint('create_log_route', __name__)
 
@@ -14,13 +18,18 @@ def create_log(
      create_log_command_handler: CreateLogCommandHandler = Provide[Container.create_log_command_handler],
 ) -> [Response, int]:
 
-    postRequest: dict = request.get_json()
+    post_request: dict = request.get_json()
+
+    Validator.validate(
+        json_to_validate=post_request,
+        json_validation_rules=CreateLogRouteValidationRules
+    )
 
     create_log_command = CreateLogCommand(
-        postRequest['action_type'],
-        postRequest['id_user'],
-        postRequest['id_user_referred'],
-        postRequest['description'],
+        post_request['action_type'],
+        post_request['id_user'],
+        post_request['id_user_referred'],
+        post_request['description'],
     )
 
     create_log_command_handler.__call__(create_log_command)
@@ -31,7 +40,7 @@ def create_log(
                 "code": 201,
                 "api_error_code": None,
                 "api_error_event": None,
-                "documentation": "https://viwish.atlassian.net/wiki/spaces/VIWISH/pages/262145/Create+Log",
+                "documentation": DocumentationUrls.url_create_log,
                 "description": "OK",
             }),
         },
