@@ -10,7 +10,7 @@ from project.domain.user.user import User
 class UserRepository(ITUserRepository):
     def getAll(self) -> list[User]:
         return User.query.all()
-    def get(self, id_user: str) -> Optional[User]:
+    def get(self, id_user: int) -> Optional[User]:
         return User.query.get(id_user)
     def getByEmail(self, email: str) -> User:
         return User.query.filter_by(email=email).first()
