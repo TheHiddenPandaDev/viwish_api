@@ -75,7 +75,5 @@ class CreateLogCommandHandlerTest(unittest.TestCase):
 
         self.assertRaises(UserNotNotFoundException, create_log_command_handler.__call__, create_log_command)
 
-#        self.assertRaises(SomeCoolException, mymod.myfunc)
-
 if __name__ == '__main__':
     unittest.main()
