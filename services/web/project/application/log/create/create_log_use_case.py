@@ -5,6 +5,7 @@ from project.documentation_urls import DocumentationUrls
 from project.domain.log.log import Log
 from project.domain.user.exception.user_not_found_exception import UserNotNotFoundException
 from project.domain.user.service.user_finder import UserFinder
+from project.domain.user.user import User
 from project.infrastructure.persistance.PostgreeSQL.log.log_repository import LogRepository
 
 
@@ -29,8 +30,6 @@ class CreateLogUseCase:
         description: str,
 
     ):
-
-        # Finder id_user
         if  (
             self.user_finder.__call__(id_user) is None or
             self.user_finder.__call__(id_user_referred) is None
@@ -44,9 +43,10 @@ class CreateLogUseCase:
             )
 
         log = Log(
-            action_type,
-            id_user,
-            id_user_referred,
-            description,
+            log_id=None,
+            action_type=action_type,
+            id_user=id_user,
+            id_user_referred=id_user_referred,
+            description=description,
         )
         self.log_repository.create(log)

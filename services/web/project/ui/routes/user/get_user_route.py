@@ -11,6 +11,6 @@ blueprint = Blueprint('get_user_route', __name__)
 @inject
 def get_user(email: str, repository: UserRepository = Provide[Container.user_repository]) -> tuple[Response, int]:
 
-    user: User = repository.get(email)
+    user: User = repository.getByEmail(email)
 
     return jsonify(user.json()), 200
