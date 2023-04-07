@@ -5,7 +5,6 @@ from project.documentation_urls import DocumentationUrls
 from project.domain.log.log import Log
 from project.domain.user.exception.user_not_found_exception import UserNotNotFoundException
 from project.domain.user.service.user_finder import UserFinder
-from project.domain.user.user import User
 from project.infrastructure.persistance.PostgreeSQL.log.log_repository import LogRepository
 
 
