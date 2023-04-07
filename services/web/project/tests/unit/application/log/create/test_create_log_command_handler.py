@@ -4,7 +4,7 @@ import project
 from unittest.mock import patch, Mock
 from faker import Faker
 
-from project.application.log.create.create_log_commandHandler import CreateLogCommandHandler
+from project.application.log.create.create_log_command_handler import CreateLogCommandHandler
 from project.application.log.create.create_log_command import CreateLogCommand
 from project.application.log.create.create_log_use_case import CreateLogUseCase
 

@@ -3,7 +3,7 @@ from dependency_injector.wiring import inject, Provide
 from werkzeug import Response
 
 from project.application.log.create.create_log_command import CreateLogCommand
-from project.application.log.create.create_log_commandHandler import CreateLogCommandHandler
+from project.application.log.create.create_log_command_handler import CreateLogCommandHandler
 from project.container import Container
 from project.documentation_urls import DocumentationUrls
 from project.infrastructure.validation.validation_rules.create_log_route_validation_rules import \

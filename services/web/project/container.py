@@ -1,8 +1,8 @@
 from dependency_injector import containers, providers
 
-from project.application.log.create.create_log_commandHandler import CreateLogCommandHandler
+from project.application.log.create.create_log_command_handler import CreateLogCommandHandler
 from project.application.log.create.create_log_use_case import CreateLogUseCase
-from project.application.user.create.create_user_commandHandler import CreateUserCommandHandler
+from project.application.user.create.create_user_command_handler import CreateUserCommandHandler
 from project.application.user.create.create_user_use_case import CreateUserUseCase
 from project.application.user.create.user_creator import UserCreator
 from project.domain.user.service.user_finder import UserFinder
