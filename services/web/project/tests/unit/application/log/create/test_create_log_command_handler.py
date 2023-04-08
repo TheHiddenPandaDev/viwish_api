@@ -13,7 +13,6 @@ from project.domain.user.service.user_finder import UserFinder
 from project.domain.user.user import User
 from project.infrastructure.persistance.PostgreeSQL.log.log_repository import LogRepository
 from project.tests.unit.domain.user.user_mother import UserMother
-
 class CreateLogCommandHandlerTest(unittest.TestCase):
 
     @patch('project.infrastructure.persistance.PostgreeSQL.log.log_repository.LogRepository')
