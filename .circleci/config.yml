@@ -3,14 +3,22 @@ orbs:
   python: circleci/python@2.1.1
 jobs:
   build:
-    working_directory: ~/project/services/web
+    working_directory: ~/viwish_backend/services/web
     executor: python/default
     steps:
       - checkout
       - run:
+          name: Go to Services Web Folder
           command: |
-            ls
-          name: Test
+            cd services/web
+      - run:
+          name: Install dependencies
+          command: |
+            pip install -r requirements.txt
+      - run:
+          name: Run Unit Tests
+          command: |
+             python3 -m unittest discover
 workflows:
   main:
     jobs:
