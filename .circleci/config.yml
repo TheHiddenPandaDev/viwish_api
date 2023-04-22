@@ -15,6 +15,14 @@ jobs:
           name: Install dependencies
           command: |
             pip install -r services/web/requirements.txt
+      - run: 
+          name: Virtual Env
+          command: |
+            source env/bin/activate
+      - run:
+          name: Copy .env
+          command: |
+            cp .env.dev-sample .env.dev
       - run:
           name: Run Unit Tests 
           command: |
