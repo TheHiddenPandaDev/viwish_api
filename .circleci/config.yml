@@ -16,7 +16,7 @@ jobs:
           command: |
             pip install -r services/web/requirements.txt
       - run:
-          name: Run Unit Tests
+          name: Run Unit Tests 
           command: |
              python3 -m unittest discover -s services/web
 workflows:
