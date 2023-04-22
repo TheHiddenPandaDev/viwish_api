@@ -18,7 +18,8 @@ jobs:
       - run: 
           name: Virtual Env
           command: |
-            source env/bin/activate
+            python -m venv ./venv
+            . venv/bin/activate
       - run:
           name: Copy .env
           command: |
