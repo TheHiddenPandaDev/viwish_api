@@ -7,7 +7,6 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - path: ~/viwish_backend
       - python/install-packages:
           pkg-manager: pip
       - python/install-packages:
