@@ -75,5 +75,12 @@ class CreateLogCommandHandlerTest(unittest.TestCase):
 
         self.assertRaises(UserNotNotFoundException, create_log_command_handler.__call__, create_log_command)
 
+    def test_negative(self):
+        testValue = True
+        # error message in case if test case got failed
+        message = "Test value is not false."
+        # assetFalse() to check test value as false
+        self.assertFalse(testValue, message)
+
 if __name__ == '__main__':
     unittest.main()
