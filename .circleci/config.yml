@@ -2,7 +2,7 @@ version: '2.1'
 orbs:
   python: circleci/python@2.1.1
 jobs:
-  build:
+  unit_tests:
     working_directory: ~/viwish_backend/services/web
     executor: python/default
     steps:
@@ -22,4 +22,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - build
+      - unit_tests
