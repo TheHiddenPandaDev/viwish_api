@@ -11,12 +11,22 @@ jobs:
           name: Go to Services Web Folder
           command: |
             cd services/web
+      - run: 
+          name: Virtual Env
+          command: |
+            python -m venv ./venv
+            . venv/bin/activate
+      - run:
+          name: Copy .env
+          command: |
+            cp .env.dev-sample .env.dev
       - run:
           name: Install dependencies
           command: |
-            pip install -r services/web/requirements.txt
+            pip install --upgrade pip
+            pip install --no-cache-dir -r services/web/requirements.txt
       - run:
-          name: Run Unit Tests
+          name: Run Unit Tests 
           command: |
              python3 -m unittest discover -s services/web
 workflows:
