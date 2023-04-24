@@ -9,7 +9,7 @@ blueprint = Blueprint('get_user_route', __name__)
 
 @blueprint.route("/<email>", methods=["GET"])
 @inject
-def get_user(email: str, repository: UserRepository = Provide[Container.user_repository]) -> tuple[Response, int]:
+def get_user(email: str, repository: UserRepository = Provide[Container.user_repository]):
 
     user: User = repository.get(email)
 
