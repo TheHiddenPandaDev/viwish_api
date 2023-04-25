@@ -24,8 +24,6 @@ jobs:
           command: |
             pip install --upgrade pip
             pip install --no-cache-dir -r services/web/requirements.txt
-  unit_testing:
-    - steps:
       - run:
           name: Run Unit Tests
           command: |
@@ -35,12 +33,6 @@ workflows:
   build_development_branches:
     jobs:
       - build:
-          filters:
-            branches:
-              ignore:
-                - development
-                - master
-      - unit_testing:
           filters:
             branches:
               ignore:
