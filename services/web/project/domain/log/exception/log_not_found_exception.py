@@ -1,7 +1,6 @@
 from project.domain.viwish_exception import ViWishException
 
-
-class UserNotNotFoundException(ViWishException):
+class LogNotNotFoundException(ViWishException):
     code: int
     api_error_code: int
     api_error_event: str
@@ -13,7 +12,7 @@ class UserNotNotFoundException(ViWishException):
         api_error_code: int,
         api_error_event: str,
         documentation: str,
-        description="User not found"
+        description="Log not found"
     ):
         self.code = code
         self.api_error_code = api_error_code

@@ -10,7 +10,7 @@ jobs:
           name: Go to Services Web Folder
           command: |
             cd services/web
-      - run: 
+      - run:
           name: Virtual Env
           command: |
             python -m venv ./venv
@@ -25,6 +25,16 @@ jobs:
             pip install --upgrade pip
             pip install --no-cache-dir -r services/web/requirements.txt
       - run:
-          name: Run Unit Tests 
+          name: Run Unit Tests
           command: |
              python3 -m unittest discover -s services/web
+workflows:
+  version: 2
+  build_all:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - development
+                - master
