@@ -30,7 +30,7 @@ jobs:
              python3 -m unittest discover -s services/web
 workflows:
   version: 2
-  build_all:
+  build_development_branches:
     jobs:
       - build:
           filters:
