@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: cimg/python:3.11.3
     steps:
+      -
       - checkout
       - run:
           name: Go to Services Web Folder
@@ -28,3 +29,10 @@ jobs:
           name: Run Unit Tests 
           command: |
              python3 -m unittest discover -s services/web
+workflows:
+  build:
+    when:
+      and:
+        - not: [ master, << pipeline.git.branch >> ]
+    jobs:
+      - build
