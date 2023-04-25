@@ -5,7 +5,6 @@ jobs:
     docker:
       - image: cimg/python:3.11.3
     steps:
-      -
       - checkout
       - run:
           name: Go to Services Web Folder
